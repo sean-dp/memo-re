@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import CreateImage from "../views/CreateImage.vue";
 import SignUp from "../views/SignUp.vue";
 import SignIn from "../views/SignIn.vue";
+import MyPage from "../views/MyPage.vue";
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: "/signIn",
     name: "signIn",
     component: SignIn,
+  },
+  {
+    path: "/myPage",
+    name: "myPage",
+    component: MyPage,
   },
   {
     path: "/createImage",

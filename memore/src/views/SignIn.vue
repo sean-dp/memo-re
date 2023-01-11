@@ -39,13 +39,28 @@ export default {
         .post(API_SERVER + "/api/v1/auth/jwt/create/", requestBody)
         .then((response) => {
           this.data = response.data;
-          console.log(this.data);
-          //ローカルストレージへの登録
-          localStorage.setItem("access", response.data.access);
-          console.log("成功");
+          const token = response.data.access;
+          let user = null;
+          console.log("ログイン成功");
+          console.log(token);
+          //ユーザー情報取得
+          axios
+            .get(API_SERVER + "/api/v1/auth/users/me/", { headers: { Authorization: "JWT " + token }})
+            .then((response2) => {
+              user = response2.data.id;
+              localStorage.setItem("access", token);
+              localStorage.setItem("id", user);
+              console.log("成功");
+              this.$router.push({ name: "myPage" });
+            })
+            .catch((e) => {
+              //エラー回避用
+              console.log("ログイン失敗");
+            });
         })
         .catch((e) => {
           //エラー回避用
+          console.log("ログイン失敗");
         });
     },
   },
