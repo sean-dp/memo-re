@@ -1,15 +1,17 @@
 <template>
   <div class="wrap">
-    <div></div>
-    <h1>サインアップ</h1>
-    <div>
+    <div class="image"><img src="@/assets/logo.png" alt="ロゴ" /></div>
+    <h1>サインイン</h1>
+    <div class="innerwrap">
       <p>メールアドレス</p>
       <input v-model="email" type="text" class="text" />
       <br />
       <p>パスワード</p>
       <input v-model="password" type="password" class="text" />
       <br />
-      <button @click="SignUp()">新規登録</button>
+      <div class="button">
+        <button @click="SignIn()">サインイン</button>
+      </div>
     </div>
   </div>
 </template>
@@ -24,25 +26,71 @@ export default {
     return {
       password: null,
       email: null,
+      data: [],
     };
   },
-  methods:{
-    SignIn(){
+  methods: {
+    SignIn() {
       const requestBody = {
         password: this.password,
         email: this.email,
-      }
-      axios.post(API_SERVER + "/api/v1/auth/jwt/create/", requestBody)
+      };
+      axios
+        .post(API_SERVER + "/api/v1/auth/jwt/create/", requestBody)
         .then((response) => {
-          console.log("成功")
+          this.data = response.data;
+          console.log(this.data);
+          //ローカルストレージへの登録
+          localStorage.setItem("access", response.data.access);
+          console.log("成功");
         })
         .catch((e) => {
-            //エラー回避用
+          //エラー回避用
         });
-    }
-  }
-
+    },
+  },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.wrap {
+  width: 630px;
+  height: 680px;
+  border: solid 2px #000;
+  margin: 0 auto;
+  padding-top: 60px;
+}
+h1 {
+  text-align: center;
+}
+.innerwrap {
+  width: 420px;
+  margin: 0 auto;
+}
+.text {
+  width: 420px;
+  height: 40px;
+  border: solid 2px #000;
+  margin-bottom: 20px;
+}
+.image {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+img {
+  width: 100%;
+}
+.button {
+  width: 160px;
+  margin: 0 auto;
+}
+button {
+  color: #fff;
+  background: #6d8dff;
+  width: 160px;
+  height: 54px;
+  text-align: center;
+  border-radius: 5px;
+}
+</style>

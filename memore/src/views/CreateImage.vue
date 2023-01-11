@@ -1,24 +1,26 @@
 <template>
-  <p>{{ image_uri }}</p>
-  <div class="wrap">
-    <h1>記憶を画像にしよう</h1>
-    <div class="innerWrap">
-      <p>題名</p>
-      <input v-model="title" type="text" class="text" />
-      <br />
-      <p>キーワード</p>
-      <input v-model="keyword" type="text" class="text" />
-      <br />
-      <p>説明</p>
-      <textarea
-        v-model="text_uri"
-        name=""
-        cols="30"
-        rows="10"
-        class="textarea"
-      ></textarea>
-      <br />
-      <button @click="ImageRequest()">画像を作成</button>
+  <div>
+    <p>{{ image_uri }}</p>
+    <div class="wrap">
+      <h1>記憶を画像にしよう</h1>
+      <div class="innerWrap">
+        <p>題名</p>
+        <input v-model="title" type="text" class="text" />
+        <br />
+        <p>キーワード</p>
+        <input v-model="keyword" type="text" class="text" />
+        <br />
+        <p>説明</p>
+        <textarea
+          v-model="text_uri"
+          name=""
+          cols="30"
+          rows="10"
+          class="textarea"
+        ></textarea>
+        <br />
+        <button @click="ImageRequest()">画像を作成</button>
+      </div>
     </div>
   </div>
 </template>
