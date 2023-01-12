@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import CreateImage from "../views/CreateImage.vue";
+import PreviewImage from "../views/PreviewImage.vue";
 import SignUp from "../views/SignUp.vue";
 import SignIn from "../views/SignIn.vue";
 import MyPage from "../views/MyPage.vue";
@@ -30,6 +31,11 @@ const routes = [
     path: "/createImage",
     name: "createImage",
     component: CreateImage,
+  },
+  {
+    path: "/previewImage",
+    name: "previewImage",
+    component: PreviewImage,
   },
 ];
 

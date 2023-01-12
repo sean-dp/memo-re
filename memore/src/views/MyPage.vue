@@ -1,9 +1,8 @@
 <template>
-ログイン成功
+  <div></div>
 </template>
 
 <script>
-
 export default {
   name: "MyPage",
   components: {},

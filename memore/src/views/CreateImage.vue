@@ -26,19 +26,22 @@
           <div class="loadingContent">
             <p>画像生成中</p>
             <div>
-              <vue-element-loading :active="loadFlag.length != 0" spinner="bar-fade-scale" />
+              <vue-element-loading
+                :active="loadFlag.length != 0"
+                spinner="bar-fade-scale"
+              />
             </div>
           </div>
         </div>
       </template>
     </div>
-
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import { API_SERVER, AI_SERVER } from "@/assets/config.js";
+// import { API_SERVER, AI_SERVER } from "@/assets/config.js";
+import { API_SERVER } from "@/assets/config.js";
 import VueElementLoading from "vue-element-loading";
 
 export default {
@@ -49,62 +52,83 @@ export default {
       title: "",
       keyword: "",
       text_uri: "",
-      image_uri: "",
+      image_uri: "test.png",
       is_public: false,
     };
   },
   name: "CreateImage",
   components: {
-    VueElementLoading
+    VueElementLoading,
   },
   methods: {
-    ImageRequest: async function() {
+    ImageRequest: async function () {
       this.loadFlag = true;
       console.log(this.loadFlag);
-      const requestBody = {
-        user_id: this.user,
+      // const requestBody = {
+      //   user_id: this.user,
+      //   keyword: this.keyword,
+      // };
+      // //画像生成
+      // await axios
+      //   .post(AI_SERVER + "/ai/debug", requestBody)
+      //   .then((/*response*/) => {
+      //     // this.image_uri = response.data.img_file;
+      //     //登録
+      //     const requestBody2 = {
+      //       user: this.user,
+      //       title: this.title,
+      //       keyword: this.keyword,
+      //       text_uri: this.text_uri,
+      //       image_uri: this.image_uri,
+      //       is_public: this.is_public,
+      //     };
+      //     const token = localStorage.getItem("access");
+      //     axios
+      //       .post(API_SERVER + "/api/v1/brains/" + this.user, requestBody2, {
+      //         headers: { Authorization: "JWT " + token },
+      //       })
+      //       .then(() => {
+      //         console.log("成功");
+      //         this.$router.push({ name: "previewImage" });
+      //         return;
+      //       })
+      //       .catch((e) => {
+      //         console.log(e);
+      //       });
+      //   })
+      //   .catch((e) => {
+      //     console.log(e);
+      //     console.log("失敗");
+      //   });
+      const requestBody2 = {
+        user: this.user,
+        title: this.title,
         keyword: this.keyword,
+        text_uri: this.text_uri,
+        image_uri: this.image_uri,
+        is_public: this.is_public,
       };
-      //画像生成
+      const token = localStorage.getItem("access");
       await axios
-        .post(AI_SERVER + "/ai/debug", requestBody)
-        .then((response) => {
-          this.image_uri = response.data.img_file;
-          //登録
-          const requestBody2 = {
-            user: this.user,
-            title: this.title,
-            keyword: this.keyword,
-            text_uri: this.text_uri,
-            image_uri: this.image_uri,
-            is_public: this.is_public,
-          };
-          const token = localStorage.getItem("access");
-          axios
-            .post(
-              API_SERVER + "/api/v1/brains/" + this.user,
-              requestBody2, { headers: { Authorization: "JWT " + token }}
-            )
-            .then(() => {
-              console.log("成功");
-            })
-            .catch((e) => {
-              console.log(e);
-            });
+        .post(API_SERVER + "/api/v1/brains/" + this.user, requestBody2, {
+          headers: { Authorization: "JWT " + token },
+        })
+        .then(() => {
+          console.log("成功");
+          this.$router.push({ name: "previewImage" });
+          return;
         })
         .catch((e) => {
           console.log(e);
-          console.log("失敗");
         });
-        this.loadFlag = "";
-        console.log(this.loadFlag);
+      this.loadFlag = "";
+      console.log(this.loadFlag);
     },
   },
 };
 </script>
 
 <style scoped>
-
 h1 {
   font-size: 22px;
   text-align: center;
@@ -147,7 +171,7 @@ button {
   border-radius: 5px;
 }
 
-.loadingWrap{
+.loadingWrap {
   width: 510px;
   height: 610px;
   margin: 0 auto;
@@ -155,23 +179,23 @@ button {
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255, 255, 255, 0.6);
 }
-.loadingContent{
-  width:300px;
+.loadingContent {
+  width: 300px;
   height: 200px;
   background-color: #fff;
   margin: 205px auto 0;
   border: solid 2px #000;
 }
-.loadingContent p{
+.loadingContent p {
   margin-top: 20px;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
 }
 
-.loadingContent div{
+.loadingContent div {
   margin-top: 30px;
 }
 </style>

@@ -45,7 +45,9 @@ export default {
           console.log(token);
           //ユーザー情報取得
           axios
-            .get(API_SERVER + "/api/v1/auth/users/me/", { headers: { Authorization: "JWT " + token }})
+            .get(API_SERVER + "/api/v1/auth/users/me/", {
+              headers: { Authorization: "JWT " + token },
+            })
             .then((response2) => {
               user = response2.data.id;
               localStorage.setItem("access", token);
@@ -53,12 +55,12 @@ export default {
               console.log("成功");
               this.$router.push({ name: "myPage" });
             })
-            .catch((e) => {
+            .catch(() => {
               //エラー回避用
               console.log("ログイン失敗");
             });
         })
-        .catch((e) => {
+        .catch(() => {
           //エラー回避用
           console.log("ログイン失敗");
         });
