@@ -12,6 +12,9 @@
       <div class="button">
         <button @click="SignIn()">サインイン</button>
       </div>
+      <div class="signup">
+        <router-link to="/SignUp">新規登録</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -50,7 +53,8 @@ export default {
             })
             .then((response2) => {
               user = response2.data.id;
-              localStorage.setItem("access", token);
+              this.$cookies.set("access",token,60 * 50);
+              //console.log(this.$cookies.get("access"));
               localStorage.setItem("id", user);
               console.log("成功");
               this.$router.push({ name: "myPage" });
@@ -74,7 +78,7 @@ export default {
   width: 630px;
   height: 680px;
   border: solid 2px #000;
-  margin: 0 auto;
+  margin: 40px auto 0;
   padding-top: 60px;
 }
 h1 {
@@ -109,5 +113,10 @@ button {
   height: 54px;
   text-align: center;
   border-radius: 5px;
+}
+.signup{
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
 }
 </style>

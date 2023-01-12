@@ -21,6 +21,9 @@
       <div class="button">
         <button @click="SignUp()">新規登録</button>
       </div>
+      <div class="signin">
+        <router-link to="/SignIn">サインイン</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -71,7 +74,7 @@ export default {
   width: 630px;
   height: 680px;
   border: solid 2px #000;
-  margin: 0 auto;
+  margin: 40px auto 0;
   padding-top: 60px;
 }
 h1 {
@@ -106,5 +109,10 @@ button {
   height: 54px;
   text-align: center;
   border-radius: 5px;
+}
+.signin{
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
 }
 </style>
