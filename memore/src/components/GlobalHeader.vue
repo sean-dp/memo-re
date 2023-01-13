@@ -1,17 +1,19 @@
 <template>
-  <div class="gl-wrap">
-    <div class="gl-global">
-      <div class="image"><img src="@/assets/logo.png" alt="ロゴ" /></div>
-      <ul>
-        <li><router-link to="/MyPage">Profile</router-link></li>
-        <li><router-link to="/CreateImage">Create</router-link></li>
-        <li @click="GlobalSide()">Friend</li>
-        <li @click="GlobalSide()">Search</li>
-        <li @click="GlobalSide()">Notice</li>
-      </ul>
-      <p class="logout" @click="Logout()">Logout</p>
+  <div class="fixed">
+    <div class="gl-wrap">
+      <div class="gl-global">
+        <div class="image"><img src="@/assets/logo.png" alt="ロゴ" /></div>
+        <ul>
+          <li><router-link to="/MyPage">Profile</router-link></li>
+          <li><router-link to="/CreateImage">Create</router-link></li>
+          <li @click="GlobalSide()">Friend</li>
+          <li @click="GlobalSide()">Search</li>
+          <li @click="GlobalSide()">Notice</li>
+        </ul>
+        <p class="logout" @click="Logout()">Logout</p>
+      </div>
+      <div class="side" v-if="globalFlag"></div>
     </div>
-    <div class="side" v-if="globalFlag"></div>
   </div>
 </template>
 
@@ -40,6 +42,9 @@ export default {
 };
 </script>
 <style scoped>
+.fixed {
+  position: fixed;
+}
 .gl-wrap {
   position: relative;
   width: 170px;

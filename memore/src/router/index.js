@@ -5,6 +5,7 @@ import PreviewImage from "../views/PreviewImage.vue";
 import SignUp from "../views/SignUp.vue";
 import SignIn from "../views/SignIn.vue";
 import MyPage from "../views/MyPage.vue";
+import ImageView from "../views/ImageView.vue";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: "/previewImage",
     name: "previewImage",
     component: PreviewImage,
+  },
+  {
+    path: "/imageView",
+    name: "imageView",
+    component: ImageView,
   },
 ];
 

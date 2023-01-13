@@ -18,4 +18,7 @@ export default {
 .flex {
   display: flex;
 }
+.fixedGlobal {
+  width: 170px;
+}
 </style>

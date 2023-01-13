@@ -1,7 +1,7 @@
 <template>
   <!-- preview作るから作成のAPIこっちに持ってくる -->
   <div class="flex">
-    <div>
+    <div class="fixedGlobal">
       <GlobalHeader />
     </div>
     <div class="preOWrap">
@@ -54,7 +54,7 @@ export default {
     };
   },
   methods: {
-    CreateNote() {
+    CreateNote: async function () {
       const requestBody = {
         user: this.user,
         title: this.title,
@@ -65,7 +65,7 @@ export default {
       };
       console.log(requestBody);
       const token = this.$cookies.get("access");
-      axios
+      await axios
         .post(API_SERVER + "/api/v1/brains/" + this.user, requestBody, {
           headers: { Authorization: "JWT " + token },
         })
