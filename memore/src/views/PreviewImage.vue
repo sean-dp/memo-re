@@ -19,11 +19,13 @@
           <p class="text_uri">{{ text_uri }}</p>
         </div>
         <div class="preImg">
-          <img :src="imgSrc" alt="画像">
+          <img :src="imgSrc" alt="画像" />
         </div>
       </div>
       <div class="flex buttonWrap">
-        <router-link to="/createImage" class="button preButton">戻る</router-link>
+        <router-link to="/createImage" class="button preButton"
+          >戻る</router-link
+        >
         <button class="button" @click="CreateNote">ノート作成</button>
       </div>
     </div>
@@ -76,52 +78,52 @@ export default {
           console.log(e);
           return;
         });
-    }
+    },
   },
   computed: {
-    imgSrc () {
+    imgSrc() {
       const img = "/media/brain/" + this.image_uri;
       return img;
     },
   },
   created() {
-    if(this.$cookies.get("access") === null){
-      this.$router.push('/SignIn');
+    if (this.$cookies.get("access") === null) {
+      this.$router.push("/SignIn");
     }
     // localStorage.removeItem("title");
     // localStorage.removeItem("keyword");
     // localStorage.removeItem("text_uri");
     // localStorage.removeItem("image_uri");
-    this.keywordAry = this.keyword.split(',');
+    this.keywordAry = this.keyword.split(",");
     console.log(this.keywordAry);
-  }
+  },
 };
 </script>
 
 <style scoped>
-.preOWrap{
+.preOWrap {
   margin: 0 auto;
   padding-top: 100px;
   width: 900px;
 }
-.preOverWrap{
+.preOverWrap {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.preWrap{
+.preWrap {
   width: 400px;
 }
-.innerWrap{
+.innerWrap {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-.title{
+.title {
   font-size: 28px;
 }
-.text_uri{
+.text_uri {
   font-size: 18px;
 }
-.keyword{
+.keyword {
   color: #fff;
   font-size: 16px;
   background: #6d8dff;
@@ -129,20 +131,20 @@ export default {
   margin-right: 10px;
   border-radius: 5px;
 }
-.text_uri{
+.text_uri {
   width: 400px;
   word-wrap: break-word;
   margin-top: 60px;
   line-height: 24px;
 }
-.preImg{
+.preImg {
   width: 360px;
 }
-.preImg img{
+.preImg img {
   width: 100%;
   border-radius: 20px;
 }
-.buttonWrap{
+.buttonWrap {
   margin: 60px auto 0;
   width: 360px;
   justify-content: space-between;
@@ -159,9 +161,9 @@ export default {
   border-radius: 5px;
   line-height: 54px;
 }
-.preButton{
+.preButton {
   background: #fff;
   color: #000;
-  border: solid 1px #CCC6C6;
+  border: solid 1px #ccc6c6;
 }
 </style>

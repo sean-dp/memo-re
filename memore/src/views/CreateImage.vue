@@ -62,7 +62,7 @@ export default {
   components: {
     VueElementLoading,
     GlobalHeader,
-},
+  },
   methods: {
     ImageRequest: async function () {
       this.loadFlag = true;
@@ -77,19 +77,19 @@ export default {
           // this.image_uri = response.data.img_file;
 
           // ローカルストレージ
-          localStorage.setItem('title',this.title);
-          localStorage.setItem('keyword',this.keyword);
-          localStorage.setItem('text_uri',this.text_uri);
-          localStorage.setItem('image_uri',this.image_uri);
+          localStorage.setItem("title", this.title);
+          localStorage.setItem("keyword", this.keyword);
+          localStorage.setItem("text_uri", this.text_uri);
+          localStorage.setItem("image_uri", this.image_uri);
           //画面遷移
           this.loadFlag = false;
-          this.$router.push('/PreviewImage');
+          this.$router.push("/PreviewImage");
         })
         .catch((e) => {
           console.log(e);
           console.log("失敗");
         });
-      //test  
+      //test
       // ローカルストレージ
       // localStorage.setItem('title',this.title);
       // localStorage.setItem('keyword',this.keyword);
@@ -104,8 +104,8 @@ export default {
     },
   },
   created() {
-    if(this.$cookies.get("access") === null){
-      this.$router.push('/SignIn');
+    if (this.$cookies.get("access") === null) {
+      this.$router.push("/SignIn");
     }
   },
 };

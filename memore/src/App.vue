@@ -5,19 +5,17 @@
 </template>
 
 <script>
-
 export default {
   name: "MyPage",
   components: {},
 };
 </script>
 
-
 <style scoped>
 @import "./css/destyle.css";
 </style>
 <style>
-  .flex {
-    display: flex;
-  }
+.flex {
+  display: flex;
+}
 </style>

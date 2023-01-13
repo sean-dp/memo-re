@@ -17,12 +17,12 @@ export default {
   components: {},
   methods: {
     Click() {
-      this.$cookies.set("default_unit_second","input_value",10);
+      this.$cookies.set("default_unit_second", "input_value", 10);
       console.log(this.$cookies.get("default_unit_second"));
     },
     Click2() {
       console.log(this.$cookies.get("default_unit_second"));
-    }
+    },
   },
 };
 </script>

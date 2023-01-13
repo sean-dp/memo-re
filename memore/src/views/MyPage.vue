@@ -14,9 +14,9 @@ export default {
   components: {
     GlobalHeader,
   },
-  created(){
-    if(this.$cookies.get("access") === null){
-      this.$router.push('/SignIn');
+  created() {
+    if (this.$cookies.get("access") === null) {
+      this.$router.push("/SignIn");
     }
   },
 };

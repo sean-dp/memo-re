@@ -33,10 +33,10 @@ export default {
     },
     Logout() {
       this.$cookies.remove("access");
-      this.$router.push('/SignIn');
+      this.$router.push("/SignIn");
       return;
     },
-  }
+  },
 };
 </script>
 <style scoped>
@@ -80,6 +80,6 @@ img {
   z-index: 5;
   width: 260px;
   height: 100vh;
-  background: #CCC6C6;
+  background: #ccc6c6;
 }
 </style>

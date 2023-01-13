@@ -53,7 +53,7 @@ export default {
             })
             .then((response2) => {
               user = response2.data.id;
-              this.$cookies.set("access",token,60 * 50);
+              this.$cookies.set("access", token, 60 * 50);
               //console.log(this.$cookies.get("access"));
               localStorage.setItem("id", user);
               console.log("成功");
@@ -114,7 +114,7 @@ button {
   text-align: center;
   border-radius: 5px;
 }
-.signup{
+.signup {
   margin-top: 20px;
   font-size: 14px;
   text-align: center;

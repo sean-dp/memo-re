@@ -110,7 +110,7 @@ button {
   text-align: center;
   border-radius: 5px;
 }
-.signin{
+.signin {
   margin-top: 20px;
   font-size: 14px;
   text-align: center;
