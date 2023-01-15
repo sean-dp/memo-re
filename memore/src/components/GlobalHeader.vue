@@ -6,31 +6,57 @@
         <ul>
           <li><router-link to="/MyPage">Profile</router-link></li>
           <li><router-link to="/CreateImage">Create</router-link></li>
-          <li @click="GlobalSide()">Friend</li>
-          <li @click="GlobalSide()">Search</li>
-          <li @click="GlobalSide()">Notice</li>
+          <li @click="GlobalSide(0)" class="pointer">Friend</li>
+          <li @click="GlobalSide(1)" class="pointer">Search</li>
+          <li @click="GlobalSide(2)" class="pointer">Notice</li>
         </ul>
-        <p class="logout" @click="Logout()">Logout</p>
+        <p class="logout pointer" @click="Logout()">Logout</p>
       </div>
-      <div class="side" v-if="globalFlag"></div>
+      <div class="side" v-if="sideFriend">
+        <h3>フレンドリスト</h3>
+        <hr>
+        <div>
+        </div>
+      </div>
+      <div class="side" v-if="sideSearch">
+        <h3>ユーザー検索</h3>
+        <hr>
+      </div>
+      <div class="side" v-if="sideNotice">
+        <h3>通知BOX</h3>
+        <hr>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 export default {
   name: "GlobalHeader",
   components: {},
   data() {
     return {
-      globalFlag: false,
+      sideFriend: false,
+      sideSearch: false,
+      sideNotice: false,
       sideBar: "",
     };
   },
   methods: {
-    GlobalSide() {
-      this.globalFlag = !this.globalFlag;
+    GlobalSide(num) {
+      if (num == 0) {
+        this.sideFriend = !this.sideFriend;
+        this.sideSearch = false;
+        this.sideNotice = false;
+      }else if (num == 1) {
+        this.sideFriend = false;
+        this.sideSearch = !this.sideSearch;
+        this.sideNotice = false;
+      }else if (num == 2) {
+        this.sideFriend = false;
+        this.sideSearch = false;
+        this.sideNotice = !this.sideNotice;
+      }
       return;
     },
     Logout() {
@@ -44,6 +70,7 @@ export default {
 <style scoped>
 .fixed {
   position: fixed;
+  width: 170px;
 }
 .gl-wrap {
   position: relative;
@@ -63,6 +90,7 @@ export default {
   margin-left: 56px;
 }
 .gl-global li {
+  width:fit-content;
   margin-bottom: 16px;
 }
 .image {
@@ -85,6 +113,16 @@ img {
   z-index: 5;
   width: 260px;
   height: 100vh;
-  background: #ccc6c6;
+  background: #E3E3E4;
+  box-shadow:6px 0px 8px 3px #ccc;
+}
+.pointer:hover {
+  cursor: pointer;
+}
+
+/* フレンド */
+h3 {
+  font-weight: bolder;
+  margin: 20px 0 20px 30px;
 }
 </style>

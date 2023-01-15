@@ -49,7 +49,7 @@ export default {
       keyword: localStorage.getItem("keyword"),
       text_uri: localStorage.getItem("text_uri"),
       image_uri: localStorage.getItem("image_uri"),
-      is_public: true,
+      is_public: false,
       keywordAry: [],
     };
   },
@@ -65,8 +65,9 @@ export default {
       };
       console.log(requestBody);
       const token = this.$cookies.get("access");
+      // .post(API_SERVER + "/api/v1/brains/" + this.user, requestBody, {
       await axios
-        .post(API_SERVER + "/api/v1/brains/" + this.user, requestBody, {
+        .post(API_SERVER + "/api/v1/brains/", requestBody, {
           headers: { Authorization: "JWT " + token },
         })
         .then(() => {
@@ -90,10 +91,10 @@ export default {
     if (this.$cookies.get("access") === null) {
       this.$router.push("/SignIn");
     }
-    // localStorage.removeItem("title");
-    // localStorage.removeItem("keyword");
-    // localStorage.removeItem("text_uri");
-    // localStorage.removeItem("image_uri");
+    localStorage.removeItem("title");
+    localStorage.removeItem("keyword");
+    localStorage.removeItem("text_uri");
+    localStorage.removeItem("image_uri");
     this.keywordAry = this.keyword.split(",");
     console.log(this.keywordAry);
   },

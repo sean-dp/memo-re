@@ -20,5 +20,6 @@ export default {
 }
 .fixedGlobal {
   width: 170px;
+  z-index: 10;
 }
 </style>

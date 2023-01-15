@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav><router-link to="/">Home</router-link> |</nav>
+    <nav><router-link to="/SignIn">SignIn</router-link> |</nav>
     <div class="home">
       <img alt="Vue logo" src="../assets/logo.png" />
     </div>
