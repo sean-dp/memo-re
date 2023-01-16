@@ -1,19 +1,21 @@
 <template>
-  <div class="wrap">
-    <div class="image"><img src="@/assets/logo.png" alt="ロゴ" /></div>
-    <h1>サインイン</h1>
-    <div class="innerwrap">
-      <p>メールアドレス<span v-if="errorMail" class="errorSpan">※メールアドレスが入力されていません</span></p>
-      <input v-model="email" type="text" class="text" />
-      <br />
-      <p>パスワード　　<span v-if="errorPass"  class="errorSpan">※パスワードが入力されていません</span></p>
-      <input v-model="password" type="password" class="text" />
-      <br />
-      <div class="button">
-        <button @click="SignIn()">サインイン</button>
-      </div>
-      <div class="signup">
-        <router-link to="/SignUp">新規登録</router-link>
+  <div class="overWrap">
+    <div class="wrap">
+      <div class="image"><img src="@/assets/logo.png" alt="ロゴ" /></div>
+      <h1>サインイン</h1>
+      <div class="innerwrap">
+        <p>メールアドレス<span v-if="errorMail" class="errorSpan">※メールアドレスが入力されていません</span></p>
+        <input v-model="email" type="text" class="text" />
+        <br />
+        <p>パスワード　　<span v-if="errorPass"  class="errorSpan">※パスワードが入力されていません</span></p>
+        <input v-model="password" type="password" class="text" />
+        <br />
+        <div class="button">
+          <button @click="SignIn()">サインイン</button>
+        </div>
+        <div class="signup">
+          <router-link to="/SignUp">新規登録</router-link>
+        </div>
       </div>
     </div>
   </div>
@@ -92,7 +94,7 @@ export default {
 .wrap {
   width: 510px;
   height: 560px;
-  margin: 40px auto 0;
+  margin: 0 auto;
   padding-top: 60px;
   border-radius: 26px;
   background: #fff;

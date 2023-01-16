@@ -1,31 +1,33 @@
 <template>
-  <div class="wrap">
-    <div class="image"><img src="@/assets/logo.png" alt="ロゴ" /></div>
-    <h1>サインアップ</h1>
-    <div class="innerwrap">
-      <p>ユーザー名<span v-if="errorUsername"  class="errorSpan">※ユーザー名が入力されていません</span></p>
-      <p>{{ error.username }}</p>
-      <input v-model="username" type="text" class="text" />
-      <br />
-      <p>メールアドレス<span v-if="errorEmail"  class="errorSpan">※メールアドレスが入力されていません</span></p>
-      <p>{{ error.email }}</p>
-      <input v-model="email" type="text" class="text" />
-      <br />
-      <p>パスワード
-        <span v-if="errorPassword"  class="errorSpan">※パスワードが入力されていません</span>
-        <span v-if="errorCheck"  class="errorSpan">※確認パスワードと違います</span>
-      </p>
-      <input v-model="password" type="password" class="text" />
-      <br />
-      <p>確認用パスワード<span v-if="errorCheckpass"  class="errorSpan">※確認用パスワードが入力されていません</span></p>
-      <p>{{ error.password }}</p>
-      <input v-model="checkpass" type="password" class="text" />
-      <br />
-      <div class="button">
-        <button @click="SignUp()">新規登録</button>
-      </div>
-      <div class="signin">
-        <router-link to="/SignIn">サインイン</router-link>
+  <div class="overWrap">
+    <div class="wrap">
+      <div class="image"><img src="@/assets/logo.png" alt="ロゴ" /></div>
+      <h1>サインアップ</h1>
+      <div class="innerwrap">
+        <p>ユーザー名<span v-if="errorUsername"  class="errorSpan">※ユーザー名が入力されていません</span></p>
+        <p>{{ error.username }}</p>
+        <input v-model="username" type="text" class="text" />
+        <br />
+        <p>メールアドレス<span v-if="errorEmail"  class="errorSpan">※メールアドレスが入力されていません</span></p>
+        <p>{{ error.email }}</p>
+        <input v-model="email" type="text" class="text" />
+        <br />
+        <p>パスワード
+          <span v-if="errorPassword"  class="errorSpan">※パスワードが入力されていません</span>
+          <span v-if="errorCheck"  class="errorSpan">※確認パスワードと違います</span>
+        </p>
+        <input v-model="password" type="password" class="text" />
+        <br />
+        <p>確認用パスワード<span v-if="errorCheckpass"  class="errorSpan">※確認用パスワードが入力されていません</span></p>
+        <p>{{ error.password }}</p>
+        <input v-model="checkpass" type="password" class="text" />
+        <br />
+        <div class="button">
+          <button @click="SignUp()">新規登録</button>
+        </div>
+        <div class="signin">
+          <router-link to="/SignIn">サインイン</router-link>
+        </div>
       </div>
     </div>
   </div>

@@ -46,8 +46,8 @@
 </template>
 
 <script>
-import axios from "axios";
-import { AI_SERVER } from "@/assets/config.js";
+// import axios from "axios";
+// import { AI_SERVER } from "@/assets/config.js";
 import VueElementLoading from "vue-element-loading";
 import GlobalHeader from "@/components/GlobalHeader.vue";
 
@@ -77,39 +77,41 @@ export default {
         return;
       }
       //API処理
+      //これは残す
       this.loadFlag = true;
-      console.log(this.loadFlag);
-      const requestBody = {
-        user_id: this.user,
-        keyword: this.keyword,
-      };
-      await axios
-        .post(AI_SERVER + "/ai/debug", requestBody)
-        .then((/*response*/) => {
-          // this.image_uri = response.data.img_file;
+      // console.log(this.loadFlag);
+      // const requestBody = {
+      //   user_id: this.user,
+      //   keyword: this.keyword,
+      // };
+      // await axios
+      //   .post(AI_SERVER + "/ai/debug", requestBody)
+      //   .then((/*response*/) => {
+      //     //ローカル時コメントアウト
+      //     // this.image_uri = response.data.img_file;
 
-          // ローカルストレージ
-          localStorage.setItem("title", this.title);
-          localStorage.setItem("keyword", this.keyword);
-          localStorage.setItem("text_uri", this.text_uri);
-          localStorage.setItem("image_uri", this.image_uri);
-          //画面遷移
-          this.loadFlag = false;
-          this.$router.push("/PreviewImage");
-        })
-        .catch((e) => {
-          console.log(e);
-          console.log("失敗");
-        });
+      //     // ローカルストレージ
+      //     localStorage.setItem("title", this.title);
+      //     localStorage.setItem("keyword", this.keyword);
+      //     localStorage.setItem("text_uri", this.text_uri);
+      //     localStorage.setItem("image_uri", this.image_uri);
+      //     //画面遷移
+      //     this.loadFlag = false;
+      //     this.$router.push("/PreviewImage");
+      //   })
+      //   .catch((e) => {
+      //     console.log(e);
+      //     console.log("失敗");
+      //   });
       //test
       // ローカルストレージ
-      // localStorage.setItem('title',this.title);
-      // localStorage.setItem('keyword',this.keyword);
-      // localStorage.setItem('text_uri',this.text_uri);
-      // localStorage.setItem('image_uri',this.image_uri);
-      // console.log(this.keyword);
-      // //画面遷移
-      // this.$router.push('/PreviewImage');
+      localStorage.setItem('title',this.title);
+      localStorage.setItem('keyword',this.keyword);
+      localStorage.setItem('text_uri',this.text_uri);
+      localStorage.setItem('image_uri',this.image_uri);
+      console.log(this.keyword);
+      //画面遷移
+      this.$router.push('/PreviewImage');
       // //test end
 
       this.loadFlag = false;

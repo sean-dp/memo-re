@@ -16,6 +16,14 @@
         <h3>フレンドリスト</h3>
         <hr>
         <div>
+          <!-- {{ glData }} -->
+          <div class="flex gl-friendWrap">
+            <div class="gl-friendImg">
+              <img src="/media/icon/default.png" alt="フレンドアイコン">
+            </div>
+            <p>白上フブキ</p>
+          </div>
+          <hr>
         </div>
       </div>
       <div class="side" v-if="sideSearch">
@@ -31,6 +39,8 @@
 </template>
 
 <script>
+import axios from "axios";
+import { API_SERVER } from "@/assets/config.js";
 export default {
   name: "GlobalHeader",
   components: {},
@@ -40,9 +50,27 @@ export default {
       sideSearch: false,
       sideNotice: false,
       sideBar: "",
+      glData: [],
     };
   },
   methods: {
+    Created: async function () {
+      const token = this.$cookies.get("access");
+      console.log(token);
+      await axios
+        .get(API_SERVER + "/api/v1/friends/list/", {
+          headers: { Authorization: "JWT " + token },
+        })
+        .then((response) => {
+          this.glData = response.data;
+          console.log(this.glData);
+          return;
+        })
+        .catch((e) => {
+          console.log(e);
+          return;
+        });
+    },
     GlobalSide(num) {
       if (num == 0) {
         this.sideFriend = !this.sideFriend;
@@ -65,6 +93,9 @@ export default {
       return;
     },
   },
+  created() {
+    this.Created();
+  }
 };
 </script>
 <style scoped>
@@ -116,13 +147,40 @@ img {
   background: #E3E3E4;
   box-shadow:6px 0px 8px 3px #ccc;
 }
-.pointer:hover {
+li:hover,.pointer:hover {
   cursor: pointer;
+  color: #FF6DE8;
+  transition: 0.1s;
+}
+
+hr {
+  color: #ccc;
 }
 
 /* フレンド */
 h3 {
   font-weight: bolder;
-  margin: 20px 0 20px 30px;
+  margin: 20px 0 20px 16px;
+  color: #515058;
+}
+.gl-friendWrap {
+  padding: 10px 0 10px 10px;
+  
+}
+.gl-friendImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.gl-friendImg img {
+  width: 100%;
+}
+.gl-friendWrap p {
+  font-size: 14px;
+  color:#515058;
+  margin-left: 20px;
+  line-height: 40px;
+  font-weight: bolder;
 }
 </style>
